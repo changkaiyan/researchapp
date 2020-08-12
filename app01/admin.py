@@ -41,6 +41,16 @@ class Canexcel(admin.ModelAdmin):  # Derive from this can export an excel file
     export_as_excel.short_description = 'Export excel'  # Display verbose_name
 
 
+class TaskCommentInline(admin.TabularInline):
+    model = TaskComment
+
+
+class PaperCommentInline(admin.TabularInline):
+    model = PaperComment
+
+
+class ProjectCommentInline(admin.TabularInline):
+    model = ProjectComment
 
 
 class ResearchAdmin(Canexcel):
@@ -60,15 +70,17 @@ class PaperAdmin(Canexcel):
     list_display = ('_id', 'name',"typ")
     search_fields = ['name', 'typ',"contribution","motivation","method"]
     list_filter = ['typ']
+    inlines = [PaperCommentInline,]
 
 class ProjectAdmin(Canexcel):
     list_display = ('_id', 'name',"typ")
     search_fields = ['name', 'typ',"contribution","motivation","method"]
     list_filter = ['typ']
+    inlines = [ProjectCommentInline,]
 
 class MeetingAdmin(Canexcel):
-    list_display = ('name', 'duri')
-    search_fields = ['name', 'duri']
+    list_display = ('name', 'start', 'end')
+    search_fields = ['name', 'duri', 'end']
 
 class SummaryAdmin(Canexcel):
     list_display = ('name', "typ")
@@ -79,12 +91,13 @@ class TaskAdmin(Canexcel):
     list_display = ("_id", 'name', "typ","deadline")
     search_fields = ["_id", 'name', "typ","deadline"]
     list_filter = ['typ']
+    inlines = [TaskCommentInline,]
 
 class IdeaAdmin(Canexcel):
     search_fields = ['name']
 
 admin.site.register(Research, ResearchAdmin)
-admin.site.register(Label, NoDisplay)
+admin.site.register(Label)
 admin.site.register(Knowledge, KnowledgeAdmin)
 admin.site.register(Paper, PaperAdmin)
 admin.site.register(Project, ProjectAdmin)

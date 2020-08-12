@@ -122,5 +122,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-FILE_URL = "static/%Y/%m/files/"
-FILE_ROOT = os.path.join(BASE_DIR, FILE_URL)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+MEDIA_URL =  '/media/'		

@@ -1,4 +1,5 @@
 # 科研管理平台 (Research Management)
+[EN](https://github.com/changkaiyan/researchapp/blob/master/readme_EN.md)
 
 为研究人员提供一个管理科研工作的平台。可以用markdown语法写summary。考虑到研究工作者基本都是用英文，因此这个平台也用英语写的。
 ![研究管理系统](./Capture.PNG)

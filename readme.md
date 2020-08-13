@@ -19,4 +19,11 @@ python manage.py runserver 8000 # 启动服务器和sqllite数据库
 每个paper和每个project都必须属于一个research，每个task也都属于research，因此要先建立research再添加其他操作。
 
 Have fun and star it！
-有问题或者bug可以在issue中提出来。期待能够提高你的科研效率。
+
+有问题或者bug可以在issue中提出来。期待能够提高你的科研效率。欢迎给本项目贡献你的奇思妙想和优质代码与文档，Contributors里会加上你的名字。
+
+## Contributors
+
+----------------
+- Chang, Kaiyan
+- Chen, Zening

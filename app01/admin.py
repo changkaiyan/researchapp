@@ -66,17 +66,20 @@ class KnowledgeAdmin(Canexcel):
     search_fields = ['abstract', 'question']
     list_filter = ['toresearch']
 
+
 class PaperAdmin(Canexcel):
     list_display = ('_id', 'name',"typ")
     search_fields = ['name', 'typ',"contribution","motivation","method"]
     list_filter = ['typ']
-    inlines = [PaperCommentInline,]
+    inlines = [PaperCommentInline]
+    exclude = ("_file",)
 
 class ProjectAdmin(Canexcel):
     list_display = ('_id', 'name',"typ")
     search_fields = ['name', 'typ',"contribution","motivation","method"]
     list_filter = ['typ']
     inlines = [ProjectCommentInline,]
+    exclude = ("_file",)
 
 class MeetingAdmin(Canexcel):
     list_display = ('name', 'start', 'end')
@@ -86,6 +89,7 @@ class SummaryAdmin(Canexcel):
     list_display = ('name', "typ")
     search_fields = ['name', 'typ',"contribution","motivation","method"]
     list_filter = ['typ']
+    exclude = ("_file",)
 
 class TaskAdmin(Canexcel):
     list_display = ("_id", 'name', "typ","deadline")

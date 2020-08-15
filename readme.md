@@ -4,15 +4,28 @@
 为研究人员提供一个管理科研工作的平台。可以用markdown语法写summary。考虑到研究工作者基本都是用英文，因此这个平台也用英语写的。
 ![研究管理系统](./Capture.PNG)
 
-## 启动
+## 调试模式启动
 
-平台用django写，单人使用debug模式就足够了。在根目录下打开命令行窗口。
+平台用django写，单人使用debug模式就足够了。在根目录下打开命令行窗口。注意要把settings.py中的DEBUG变量改成True。
+
 ~~~bash
 pip install -r requirements.txt # 安装必要的包
 python manage.py runserver 8000 # 启动服务器和sqllite数据库
 ~~~
 
 然后打开浏览器，访问 http://127.0.0.1:8000/admin 就可以看到界面了。初始账户和密码均为admin。
+
+## 部署到云服务器上
+
+通过uwsgi连接nginx。注意要把settings.py中的DEBUG变量改成False。
+
+~~~bash
+pip install https://github.com/changkaiyan/django-suit.git
+pip install -r requirements.txt 
+pip install uwsgi
+uwsgi --ini uwsgi.ini # 此步之前请更改uwsgi.ini文件
+nginx # 此步之前请更改/etc/nginx/nginx.conf文件建立连接
+~~~
 
 ## 数据形式
 

@@ -40,6 +40,8 @@ class ProjectComment(models.Model):
     def __str__(self):
         return "Task Comment: "+"{}".format(self._id)
 
+
+
 class Research(models.Model):
     _id = models.AutoField(primary_key=True, verbose_name="ID")
     name = models.CharField(max_length=150, verbose_name="Name")
@@ -71,7 +73,8 @@ class Paper(models.Model):
     _id = models.AutoField(primary_key=True, verbose_name="ID", default=None)
     name = models.CharField(verbose_name="Name",max_length=100,unique=True, default=None)
     typ = models.ForeignKey(verbose_name="Type", to="Research",on_delete=models.CASCADE, default=None)
-    file = models.FileField(verbose_name="Attachment", default=None,null=True, blank=True,upload_to='paper')
+    file = models.FileField(verbose_name="Attachment", default=None,null=True, blank=True)
+    _file = models.CharField(max_length=200, blank=True)
     contribution = models.TextField(verbose_name="Contribution",null=True, blank=True)
     motivation = models.TextField(verbose_name="Motivation",null=True, blank=True)
     method = models.TextField(verbose_name="Method", null=True, blank=True)
@@ -87,6 +90,7 @@ class Project(models.Model):
     name = models.CharField(verbose_name="Name", max_length=100,unique=True, default=None)
     typ = models.ForeignKey(verbose_name="Type", to="Research",on_delete=models.CASCADE, default=None)
     file = models.FileField(verbose_name="Attachment", default=None,null=True, blank=True)
+    _file = models.CharField(max_length=200, blank=True)
     motivation = models.TextField(verbose_name="Motivation",null=True, blank=True)
     method = models.TextField(verbose_name="Method", null=True, blank=True)
     description = MDTextField(verbose_name="Description",null=True, blank=True)
@@ -128,6 +132,7 @@ class Summary(models.Model):
     typ = models.CharField(verbose_name="Type", max_length=100, choices=summ_choice, default=None)
     proposed = models.DateTimeField('Create Time', default=timezone.now)
     file = models.FileField(verbose_name="Attachment", default=None, blank=True)
+    _file = models.CharField(max_length=200, blank=True)
     background = models.TextField(verbose_name="Background",null=True, blank=True)
     contribution = models.TextField(verbose_name="Contribution",null=True, blank=True)
     motivation = models.TextField(verbose_name="Motivation",null=True, blank=True)
